@@ -11,13 +11,13 @@ import RxSwift
 import RxCocoa
 
 protocol DisplayViewModelInput {
-    func city(named: String?)
-    func street(address: String?)
-    func generalMeasurements(from stationId: Int)
-    func detailedMeasurements(from stationId: Int)
+    func generalMeasurements()
+    func detailedMeasurements()
 }
 
 protocol DisplayViewModelOutput {
+    var availableInStorage: BehaviorRelay<Bool> { get }
+    
     var generalQuality: BehaviorRelay<String> { get }
     var pm_10Status: BehaviorRelay<String> { get }
     var pm_10Date: BehaviorRelay<String> { get }
@@ -42,7 +42,10 @@ struct DisplayViewModelConfig {
     static let noStreetName = String("No street address")
 }
 
+
 class DisplayViewModel: DisplayViewModelInput, DisplayViewModelOutput {
+    let availableInStorage = BehaviorRelay<Bool>.init(value: false)
+    
     let generalQuality = BehaviorRelay<String>.init(value: "")
     let pm_10Status = BehaviorRelay<String>.init(value: "")
     let pm_10Date = BehaviorRelay<String>.init(value: "")
@@ -53,22 +56,37 @@ class DisplayViewModel: DisplayViewModelInput, DisplayViewModelOutput {
     var cityName = BehaviorRelay<String>.init(value: "")
     var streetAddres = BehaviorRelay<String>.init(value: "")
     
-    let disposeBag = DisposeBag()
+    private let disposeBag = DisposeBag()
+    private let storage = UserDefaults.standard
+    
+    init() {
+        storage.rx
+            .observe(Int.self, UserDefaults.stationIdKey)
+            .map { $0 != nil }
+            .bind(to: availableInStorage)
+            .disposed(by: disposeBag)
+        
+        storage.rx
+            .observe(String.self, UserDefaults.cityKey)
+            .map { $0 ?? "" }
+            .bind(to: cityName)
+            .disposed(by: disposeBag)
+        
+        storage.rx
+            .observe(String.self, UserDefaults.addressKey)
+            .map { $0 ?? "" }
+            .bind(to: streetAddres)
+            .disposed(by: disposeBag)
+    }
     
     deinit {
         print(#function, String(describing: self))
     }
     
-    func city(named: String?) {
-        cityName.accept(named ?? DisplayViewModelConfig.noCityName)
-    }
-    
-    func street(address: String?) {
-        streetAddres.accept(address ?? DisplayViewModelConfig.noStreetName)
-    }
-    
-    func generalMeasurements(from stationId: Int) {
-        let general = DisplayViewModel.downloadGeneralQuality(stationId: stationId)
+    func generalMeasurements() {
+        guard let storage = storage.fetch() else { return }
+        
+        let general = DisplayViewModel.downloadGeneralQuality(stationId: storage.id)
                 .share()
         general
             .do(onNext: { data in
@@ -80,9 +98,11 @@ class DisplayViewModel: DisplayViewModelInput, DisplayViewModelOutput {
             .disposed(by: disposeBag)
     }
     
-    func detailedMeasurements(from stationId: Int) {
+    func detailedMeasurements() {
+        guard let storage = storage.fetch() else { return }
+        
         let measurements = DisplayViewModel
-            .downloadSensors(from: stationId)
+            .downloadSensors(from: storage.id)
             .flatMap { sensors in Observable.from(sensors)}
             .flatMap { DisplayViewModel.downloadMeasurement(from: $0) }
             .toArray()
@@ -96,11 +116,13 @@ class DisplayViewModel: DisplayViewModelInput, DisplayViewModelOutput {
 
         key_pm10
             .map { String("\($0.description)") }
+            .catchErrorJustReturn("")
             .bind(to: pm_10Status)
             .disposed(by: disposeBag)
         
         key_pm10
             .map { String("\($0.date)") }
+            .catchErrorJustReturn("")
             .bind(to: pm_10Date)
             .disposed(by: disposeBag)
         
@@ -119,24 +141,6 @@ class DisplayViewModel: DisplayViewModelInput, DisplayViewModelOutput {
             .map { String("\($0.date)") }
             .bind(to: pm_2_5Date)
             .disposed(by: disposeBag)
-
-//        measurements
-//            .subscribe(onNext: { measures in
-//                measures.forEach { measure in
-//                    print("****************")
-//                    dump(measure)
-//                    print("****************")
-//                }
-//            })
-//            .disposed(by: disposeBag)
-        
-//        funcA().flatMap{ objects in
-//            Observable.from(objects)
-//            }
-//            .flatMap{ eachObject in
-//                funcB(eachObject)
-//        }
-
     }
 }
 
@@ -166,7 +170,6 @@ extension DisplayViewModel {
     static func downloadSensors(from stationId: Int) -> Observable<[Sensor]> {
         let remote = URL(string: "http://api.gios.gov.pl/pjp-api/rest/station/sensors/\(stationId)")!
         let request = URLRequest(url: remote)
-        //let request = URLRequest(url: remote, cachePolicy: .returnCacheDataElseLoad)
         
         return URLSession.shared.rx.response(request: request)
             .map { _, data in return try DisplayViewModel.parseSensors(data: data) }
@@ -180,7 +183,6 @@ extension DisplayViewModel {
         
         return URLSession.shared.rx.response(request: request)
             .map { _, data in return try DisplayViewModel.parseMeasurement(data: data) }
-//            .catchErrorJustReturn(T##element: Measure##Measure)
     }
     
     static func parseSensors(data: Data) throws -> [Sensor] {

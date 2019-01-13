@@ -20,7 +20,8 @@ class SearchViewController: UIViewController {
     var viewModel: SearchViewModelType?
     var delegate: SearchViewControllerDelegate?
     
-    let disposeBag = DisposeBag()
+    private let disposeBag = DisposeBag()
+    private let storage = UserDefaults.standard
     
     deinit {
         print(#function, String(describing: self))
@@ -57,6 +58,18 @@ extension SearchViewController {
                 cell.configure(with: model) }
             .disposed(by: disposeBag)
         
+        viewModel?.outputs.dataSource
+            .observeOn(MainScheduler.instance)
+            .skip(1)
+            .take(1)
+            .withLatestFrom(Observable.just(storage.fetch())) { fetchedOnline, storage -> Int? in
+                guard let storage = storage else { return nil }
+                return fetchedOnline.firstIndex(where: { $0.id == storage.id }) }
+            .subscribe(onNext: { [weak self] row in
+                guard let row = row else { return }
+                self?.tableView.selectRow(at: IndexPath(row: row, section: 0), animated: true, scrollPosition: .middle) })
+            .disposed(by: disposeBag)
+
         viewModel?.outputs.selected
             .subscribe(onNext: { [weak self] station in
                 self?.delegate?.didSelected(station: station)
