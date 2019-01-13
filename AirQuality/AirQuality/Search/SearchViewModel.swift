@@ -31,14 +31,9 @@ protocol SearchViewModelType {
 class SearchViewModel: SearchViewModelInput, SearchViewModelOutput {
     let dataSource = BehaviorSubject<[MeasuringStation]>(value: [])
     let selected = ReplaySubject<Station>.create(bufferSize: 1)
-    let disposeBag = DisposeBag()
     
-//    init() {
-//        selected
-//            .subscribe(onNext: { station in
-//                print("Selected: \(station)") })
-//            .disposed(by: disposeBag)
-//    }
+    private let disposeBag = DisposeBag()
+    private let storage = UserDefaults.standard
     
     deinit {
         print(#function, String(describing: self))
@@ -55,6 +50,8 @@ class SearchViewModel: SearchViewModelInput, SearchViewModelOutput {
         let simplerStation = Station(id: station.id,
                                      cityName: station.city?.name,
                                      address: station.addressStreet)
+        
+        storage.store(station: simplerStation)
         selected.onNext(simplerStation)
     }
 }
@@ -62,8 +59,7 @@ class SearchViewModel: SearchViewModelInput, SearchViewModelOutput {
 extension SearchViewModel {
     static func downloadStations() -> Observable<[MeasuringStation]> {
         let remote = URL(string: "http://api.gios.gov.pl/pjp-api/rest/station/findAll")!
-        let request = URLRequest(url: remote)
-        //let request = URLRequest(url: remote, cachePolicy: .returnCacheDataElseLoad)
+        let request = URLRequest(url: remote, cachePolicy: .returnCacheDataElseLoad)
         
         return URLSession.shared.rx.response(request: request)
             .map { _, data in return try SearchViewModel.parseJSON(data: data) }

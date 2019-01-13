@@ -18,20 +18,24 @@ class DisplayViewController: UIViewController {
     
     var viewModel: DisplayViewModelType?
     
-    let disposeBag = DisposeBag()
+    private let disposeBag = DisposeBag()
+    
+    deinit {
+        print(#function, String(describing: self))
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         bindGeneral()
         bindDetails()
-        
-        viewModel?.inputs.generalMeasurements(from: 117)
-        viewModel?.inputs.detailedMeasurements(from: 117)
     }
     
-    deinit {
-        print(#function, String(describing: self))
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        viewModel?.inputs.generalMeasurements()
+        viewModel?.inputs.detailedMeasurements()
     }
 }
 
