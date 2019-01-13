@@ -12,10 +12,12 @@ import RxCocoa
 
 protocol SearchViewModelInput {
     func fetchData()
+    func select(station: MeasuringStation)
 }
 
 protocol SearchViewModelOutput {
     var dataSource: BehaviorSubject<[MeasuringStation]> { get }
+    var selected: ReplaySubject<Station> { get }
 }
 
 protocol SearchViewModelType {
@@ -28,7 +30,15 @@ protocol SearchViewModelType {
 
 class SearchViewModel: SearchViewModelInput, SearchViewModelOutput {
     let dataSource = BehaviorSubject<[MeasuringStation]>(value: [])
+    let selected = ReplaySubject<Station>.create(bufferSize: 1)
     let disposeBag = DisposeBag()
+    
+//    init() {
+//        selected
+//            .subscribe(onNext: { station in
+//                print("Selected: \(station)") })
+//            .disposed(by: disposeBag)
+//    }
     
     deinit {
         print(#function, String(describing: self))
@@ -39,6 +49,13 @@ class SearchViewModel: SearchViewModelInput, SearchViewModelOutput {
             .downloadStations()
             .bind(to: dataSource)
             .disposed(by: disposeBag)
+    }
+    
+    func select(station: MeasuringStation) {
+        let simplerStation = Station(id: station.id,
+                                     cityName: station.city?.name,
+                                     address: station.addressStreet)
+        selected.onNext(simplerStation)
     }
 }
 

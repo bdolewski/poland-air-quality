@@ -25,7 +25,7 @@ class DisplayViewController: UIViewController {
         bindDetails()
         
         viewModel?.inputs.generalMeasurements(from: 117)
-        viewModel?.inputs.detailedMeasurements(from: 666)
+        viewModel?.inputs.detailedMeasurements(from: 117)
     }
     
     deinit {

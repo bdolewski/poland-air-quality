@@ -58,7 +58,7 @@ class DisplayViewModel: DisplayViewModelInput, DisplayViewModelOutput {
     
     func detailedMeasurements(from stationId: Int) {
         let measurements = DisplayViewModel
-            .downloadSensors()
+            .downloadSensors(from: stationId)
             .flatMap { sensors in Observable.from(sensors)}
             .flatMap { DisplayViewModel.downloadMeasurement(from: $0) }
             .toArray()
@@ -139,8 +139,7 @@ extension DisplayViewModel {
 
 // MARK: - Functions to get detailed measurements
 extension DisplayViewModel {
-    static func downloadSensors() -> Observable<[Sensor]> {
-        let stationId = 117
+    static func downloadSensors(from stationId: Int) -> Observable<[Sensor]> {
         let remote = URL(string: "http://api.gios.gov.pl/pjp-api/rest/station/sensors/\(stationId)")!
         let request = URLRequest(url: remote)
         //let request = URLRequest(url: remote, cachePolicy: .returnCacheDataElseLoad)

@@ -50,5 +50,16 @@ extension SearchViewController {
             { _, model, cell in
                 cell.configure(with: model) }
             .disposed(by: disposeBag)
+        
+        viewModel?.outputs.selected
+            .subscribe(onNext: { station in
+                print("Selected: \(station)")
+            })
+            .disposed(by: disposeBag)
+        
+        tableView.rx.modelSelected(MeasuringStation.self)
+            .subscribe(onNext: { [weak self] station in
+                self?.viewModel?.inputs.select(station: station)
+            }).disposed(by: disposeBag)
     }
 }
