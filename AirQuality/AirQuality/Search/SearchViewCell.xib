@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="146" id="vJt-KT-dPG" customClass="SearchViewCell" customModule="AirQuality" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="474" height="146"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vJt-KT-dPG" id="92q-sq-HcS">
+                <rect key="frame" x="0.0" y="0.0" width="474" height="145.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="qn8-Fr-n8x">
+                        <rect key="frame" x="20" y="11" width="434" height="124"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ul. Korzeniowskiego 40/8" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nFf-uE-oYk" userLabel="Title">
+                                <rect key="frame" x="0.0" y="0.0" width="434" height="62"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wrocław" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e0b-Aq-qXp" userLabel="Subtitle">
+                                <rect key="frame" x="0.0" y="62" width="434" height="62"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="qn8-Fr-n8x" firstAttribute="leading" secondItem="92q-sq-HcS" secondAttribute="leadingMargin" id="dNI-1u-9MM"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="qn8-Fr-n8x" secondAttribute="trailing" id="ecm-ph-LIf"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="qn8-Fr-n8x" secondAttribute="bottom" id="hRC-dW-KoK"/>
+                    <constraint firstItem="qn8-Fr-n8x" firstAttribute="top" secondItem="92q-sq-HcS" secondAttribute="topMargin" id="kyg-jw-Bb9"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="cityLabel" destination="e0b-Aq-qXp" id="3Eg-TL-rdd"/>
+                <outlet property="streeLabel" destination="nFf-uE-oYk" id="1XM-iG-ibf"/>
+            </connections>
+            <point key="canvasLocation" x="132.80000000000001" y="94.452773613193415"/>
+        </tableViewCell>
+    </objects>
+</document>
