@@ -14,7 +14,7 @@ class AppCoordinator: Coordinator {
     }
     
     var window: UIWindow?
-    let childCoordinators: [Coordinator]
+    var childCoordinators: [Coordinator]
     
     lazy var tabBarController: UIViewController = {
         let tabBarController = UITabBarController()
@@ -28,20 +28,25 @@ class AppCoordinator: Coordinator {
     
     init(window: UIWindow?) {
         self.window = window
-        self.childCoordinators = [DisplayCoordinator(), SearchCoordinator(), AboutCoordinator()]
+        self.childCoordinators = []
     }
     
     func start() {
         self.window?.makeKeyAndVisible()
+        
+        let searchCoordinator = SearchCoordinator()
+        searchCoordinator.delegate = self
+        self.childCoordinators = [DisplayCoordinator(), searchCoordinator, AboutCoordinator()]
+        
         self.window?.rootViewController = self.rootViewController
     }
 }
 
 extension AppCoordinator: SearchCoordinatorDelegate {
-    func didSelected(station: Station) {
+    func passStation(station: Station) {
         guard let coordinator = self.childCoordinators.first(where: { $0 is DisplayCoordinator }),
             let displayCoordinator = coordinator as? DisplayCoordinator else { return }
-        
+
         displayCoordinator.updatedStation.accept(station)
     }
 }

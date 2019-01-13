@@ -17,7 +17,7 @@ struct Station {
 }
 
 protocol SearchCoordinatorDelegate: AnyObject {
-    func didSelected(station: Station)
+    func passStation(station: Station)
 }
 
 class SearchCoordinator: Coordinator {
@@ -25,7 +25,11 @@ class SearchCoordinator: Coordinator {
         return navigationController
     }
     
-    weak var delegate: SearchCoordinatorDelegate?
+    var delegate: SearchCoordinatorDelegate? {
+        didSet {
+            print("SearchCoordinatorDelegate is set")
+        }
+    }
     
     private var navigationController: UINavigationController
     private let viewController: SearchViewController
@@ -41,22 +45,23 @@ class SearchCoordinator: Coordinator {
         let searchVM = SearchViewModel()
         
         self.viewController.viewModel = searchVM
+        self.viewController.delegate = self
         self.viewController.title = "Search station"
         self.viewController.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 1)
         
-        self.viewController.viewModel?.outputs.dataSource
-            .subscribe(onNext: { dataSource in
-                print("Got data source in Coordinator: \(dataSource)")
-            }).disposed(by: disposeBag)
-        
-        // bind view model selected model to someone intested in (other coordinator for example)
-        self.viewController.viewModel?.outputs.selected
-            .do(onNext: { SearchCoordinator.debug(station: $0) })
-            .subscribe(onNext: { [weak self] station in
-                self?.delegate?.didSelected(station: station) })
-            .disposed(by: disposeBag)
-        
         self.navigationController.pushViewController(self.viewController, animated: false)
+    }
+}
+
+extension SearchCoordinator: SearchViewControllerDelegate {
+    func didSelected(station: Station) {
+        if self.delegate == nil {
+            print("delegate == nil")
+            return
+        }
+        
+        delegate?.passStation(station: station)
+        //self.delegate?.didSelected(station: station)
     }
 }
 

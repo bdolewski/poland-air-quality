@@ -12,6 +12,7 @@ import RxCocoa
 
 class DisplayViewController: UIViewController {
     @IBOutlet var generalQualityLabel: UILabel!
+    @IBOutlet var stationAddressLabel: UILabel!
     @IBOutlet var pm10Label: UILabel!
     @IBOutlet var pm2_5Label: UILabel!
     
@@ -22,6 +23,7 @@ class DisplayViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        bindGeneral()
         bindDetails()
         
         viewModel?.inputs.generalMeasurements(from: 117)
@@ -34,13 +36,27 @@ class DisplayViewController: UIViewController {
 }
 
 extension DisplayViewController {
-    func bindDetails() {
+    func bindGeneral() {
         guard let viewModel = self.viewModel else { return }
+        
+        viewModel.outputs.cityName
+            .asDriver()
+            .drive(self.rx.title)
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.streetAddres
+            .asDriver()
+            .drive(stationAddressLabel.rx.text)
+            .disposed(by: disposeBag)
         
         viewModel.outputs.generalQuality
             .asDriver()
             .drive(generalQualityLabel.rx.text)
             .disposed(by: disposeBag)
+    }
+    
+    func bindDetails() {
+        guard let viewModel = self.viewModel else { return }
         
         Observable.combineLatest(viewModel.outputs.pm_10Status,
                                  viewModel.outputs.pm_10Date) { "PM10: " + DisplayViewController.formatLabel(status: $0, date: $1) }

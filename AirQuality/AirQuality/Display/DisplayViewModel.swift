@@ -11,6 +11,8 @@ import RxSwift
 import RxCocoa
 
 protocol DisplayViewModelInput {
+    func city(named: String?)
+    func street(address: String?)
     func generalMeasurements(from stationId: Int)
     func detailedMeasurements(from stationId: Int)
 }
@@ -22,6 +24,9 @@ protocol DisplayViewModelOutput {
     
     var pm_2_5Status: BehaviorRelay<String> { get }
     var pm_2_5Date: BehaviorRelay<String> { get }
+    
+    var cityName: BehaviorRelay<String> { get }
+    var streetAddres: BehaviorRelay<String> { get }
 }
 
 protocol DisplayViewModelType {
@@ -32,6 +37,11 @@ protocol DisplayViewModelType {
     var outputs: DisplayViewModelOutput { get }
 }
 
+struct DisplayViewModelConfig {
+    static let noCityName = String("No city")
+    static let noStreetName = String("No street address")
+}
+
 class DisplayViewModel: DisplayViewModelInput, DisplayViewModelOutput {
     let generalQuality = BehaviorRelay<String>.init(value: "")
     let pm_10Status = BehaviorRelay<String>.init(value: "")
@@ -40,17 +50,31 @@ class DisplayViewModel: DisplayViewModelInput, DisplayViewModelOutput {
     let pm_2_5Status = BehaviorRelay<String>.init(value: "")
     let pm_2_5Date = BehaviorRelay<String>.init(value: "")
     
+    var cityName = BehaviorRelay<String>.init(value: "")
+    var streetAddres = BehaviorRelay<String>.init(value: "")
+    
     let disposeBag = DisposeBag()
     
     deinit {
         print(#function, String(describing: self))
     }
     
+    func city(named: String?) {
+        cityName.accept(named ?? DisplayViewModelConfig.noCityName)
+    }
+    
+    func street(address: String?) {
+        streetAddres.accept(address ?? DisplayViewModelConfig.noStreetName)
+    }
+    
     func generalMeasurements(from stationId: Int) {
         let general = DisplayViewModel.downloadGeneralQuality(stationId: stationId)
                 .share()
         general
-            .do(onNext: { data in dump(data) })
+            .do(onNext: { data in
+                dump(data)
+                print("*************")
+            })
             .map { $0.stIndexLevel.indexLevelName }
             .bind(to: generalQuality)
             .disposed(by: disposeBag)

@@ -10,10 +10,16 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+protocol SearchViewControllerDelegate {
+    func didSelected(station: Station)
+}
+
 class SearchViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
     
     var viewModel: SearchViewModelType?
+    var delegate: SearchViewControllerDelegate?
+    
     let disposeBag = DisposeBag()
     
     deinit {
@@ -52,8 +58,8 @@ extension SearchViewController {
             .disposed(by: disposeBag)
         
         viewModel?.outputs.selected
-            .subscribe(onNext: { station in
-                print("Selected: \(station)")
+            .subscribe(onNext: { [weak self] station in
+                self?.delegate?.didSelected(station: station)
             })
             .disposed(by: disposeBag)
         

@@ -15,6 +15,7 @@
                 <outlet property="generalQualityLabel" destination="YrH-AI-uEe" id="1K7-ZZ-L5q"/>
                 <outlet property="pm10Label" destination="9tG-bM-ndr" id="Ybt-zW-PAz"/>
                 <outlet property="pm2_5Label" destination="Edp-Q7-jnl" id="ybP-Y9-L3i"/>
+                <outlet property="stationAddressLabel" destination="uKT-Q3-UYK" id="wUJ-vb-Bkd"/>
                 <outlet property="view" destination="iN0-l3-epB" id="uAS-U3-EYJ"/>
             </connections>
         </placeholder>
