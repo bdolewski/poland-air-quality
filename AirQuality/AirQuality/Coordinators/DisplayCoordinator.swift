@@ -24,7 +24,7 @@ class DisplayCoordinator: Coordinator {
         let displayVM = DisplayViewModel()
         
         displayVC.viewModel = displayVM
-        displayVC.tabBarItem = UITabBarItem(tabBarSystemItem: .downloads, tag: 0)
+        displayVC.tabBarItem = UITabBarItem(tabBarSystemItem: .featured, tag: 0)
         
         self.navigationController.pushViewController(displayVC, animated: false)
     }
