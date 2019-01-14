@@ -76,6 +76,12 @@ extension DisplayViewController {
             .map { Labels.overall(text: DisplayViewController.translate(qualityState: $0), color: $0.color) }
             .drive(generalQualityLabel.rx.attributedText)
             .disposed(by: disposeBag)
+        
+        viewModel.outputs.overallState
+            .asDriver()
+            .map { Colors.toBackgroundColor(quality: $0) }
+            .drive(view.rx.backgroundColor)
+            .disposed(by: disposeBag)
     }
     
     func bindDetails() {

@@ -42,6 +42,7 @@
 		8B8395F021EC871E0057F887 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8395EF21EC871E0057F887 /* Colors.swift */; };
 		8B8395F221EC89320057F887 /* QualityState+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8395F121EC89320057F887 /* QualityState+Extensions.swift */; };
 		8B8395F421EC8ACD0057F887 /* Labels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8395F321EC8ACD0057F887 /* Labels.swift */; };
+		8B8395F621ECAE940057F887 /* UIView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8395F521ECAE940057F887 /* UIView+Rx.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +97,7 @@
 		8B8395EF21EC871E0057F887 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		8B8395F121EC89320057F887 /* QualityState+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QualityState+Extensions.swift"; sourceTree = "<group>"; };
 		8B8395F321EC8ACD0057F887 /* Labels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Labels.swift; sourceTree = "<group>"; };
+		8B8395F521ECAE940057F887 /* UIView+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Rx.swift"; sourceTree = "<group>"; };
 		A33BEEB8BCCC15D3759724DE /* Pods_AirQualityTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AirQualityTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA52BDB8B6E30764EDDE03E9 /* Pods-AirQualityTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirQualityTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AirQualityTests/Pods-AirQualityTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -210,6 +212,7 @@
 				158AB89421E3821900CB216B /* UITableViewCell+Extension.swift */,
 				15768AD621EB89AC005AC555 /* UserDefaults+Extension.swift */,
 				8B8395F121EC89320057F887 /* QualityState+Extensions.swift */,
+				8B8395F521ECAE940057F887 /* UIView+Rx.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -471,6 +474,7 @@
 				158AB82E21E25F9F00CB216B /* AppDelegate.swift in Sources */,
 				158AB87521E36FD900CB216B /* SearchViewCell.swift in Sources */,
 				158AB88521E37BA800CB216B /* UITableView+Extension.swift in Sources */,
+				8B8395F621ECAE940057F887 /* UIView+Rx.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
