@@ -6,6 +6,8 @@
   Copyright © 2019 Bartosz Dolewski. All rights reserved.
 */
 
+"tab.search" = "Search";
+
 "appwide.no_street" = "No street";
 "appwide.no_city" = "No city";
 

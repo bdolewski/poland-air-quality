@@ -6,6 +6,8 @@
   Copyright © 2019 Bartosz Dolewski. All rights reserved.
 */
 
+"tab.search" = "Szukaj";
+
 "appwide.no_street" = "Brak adresu";
 "appwide.no_city" = "Brak miasta";
 
