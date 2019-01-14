@@ -1,0 +1,26 @@
+/* 
+  Localizable.strings
+  AirQuality
+
+  Created by Bartosz Dolewski on 14/01/2019.
+  Copyright © 2019 Bartosz Dolewski. All rights reserved.
+*/
+
+"tab.search" = "Search";
+
+"appwide.no_street" = "No street";
+"appwide.no_city" = "No city";
+
+"quality.veryGood" = "Very good";
+"quality.good" = "Good";
+"quality.moderate" = "Moderate";
+"quality.passable" = "Passable";
+"quality.bad" = "Bad";
+"quality.veryBad" = "Very bad";
+"quality.notAvailable" = "No data";
+
+"display.header" = "Quality of the air:";
+"search.header" = "Select your station";
+
+"about.header" = "About App";
+"about.author" = "Author: ";

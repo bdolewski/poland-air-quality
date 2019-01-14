@@ -16,6 +16,8 @@
 		151DF3F321E4BDAA000BB85F /* Measure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151DF3F221E4BDAA000BB85F /* Measure.swift */; };
 		151DF3F521E4BDE4000BB85F /* RESTModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151DF3F421E4BDE4000BB85F /* RESTModel.swift */; };
 		15768AD521EA6BA1005AC555 /* QualityIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15768AD421EA6BA1005AC555 /* QualityIndex.swift */; };
+		15768AD721EB89AC005AC555 /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15768AD621EB89AC005AC555 /* UserDefaults+Extension.swift */; };
+		15768AF621ED07D4005AC555 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 15768AF821ED07D4005AC555 /* Localizable.strings */; };
 		158AB82E21E25F9F00CB216B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158AB82D21E25F9F00CB216B /* AppDelegate.swift */; };
 		158AB83521E25FA000CB216B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 158AB83421E25FA000CB216B /* Assets.xcassets */; };
 		158AB83821E25FA000CB216B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 158AB83621E25FA000CB216B /* LaunchScreen.storyboard */; };
@@ -38,6 +40,10 @@
 		158AB89521E3821900CB216B /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158AB89421E3821900CB216B /* UITableViewCell+Extension.swift */; };
 		195E7F1EA4E7223FA5AF9A53 /* Pods_AirQualityTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A33BEEB8BCCC15D3759724DE /* Pods_AirQualityTests.framework */; };
 		2F78F520A6A9CC1744358AAC /* Pods_AirQuality.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86C0E361B9C64618725760FC /* Pods_AirQuality.framework */; };
+		8B8395F021EC871E0057F887 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8395EF21EC871E0057F887 /* Colors.swift */; };
+		8B8395F221EC89320057F887 /* QualityState+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8395F121EC89320057F887 /* QualityState+Extensions.swift */; };
+		8B8395F421EC8ACD0057F887 /* Labels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8395F321EC8ACD0057F887 /* Labels.swift */; };
+		8B8395F621ECAE940057F887 /* UIView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8395F521ECAE940057F887 /* UIView+Rx.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +66,10 @@
 		151DF3F221E4BDAA000BB85F /* Measure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Measure.swift; sourceTree = "<group>"; };
 		151DF3F421E4BDE4000BB85F /* RESTModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RESTModel.swift; sourceTree = "<group>"; };
 		15768AD421EA6BA1005AC555 /* QualityIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QualityIndex.swift; sourceTree = "<group>"; };
+		15768AD621EB89AC005AC555 /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
+		15768AED21ED06CC005AC555 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		15768AF721ED07D4005AC555 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		15768B0021ED084F005AC555 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		158AB82A21E25F9F00CB216B /* AirQuality.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirQuality.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		158AB82D21E25F9F00CB216B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		158AB83421E25FA000CB216B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -88,6 +98,10 @@
 		57BB2D52CACC7B8CDE47A81F /* Pods-AirQuality.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirQuality.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AirQuality/Pods-AirQuality.debug.xcconfig"; sourceTree = "<group>"; };
 		6AF81052DE0C77097C7DE8FE /* Pods-AirQualityTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirQualityTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AirQualityTests/Pods-AirQualityTests.debug.xcconfig"; sourceTree = "<group>"; };
 		86C0E361B9C64618725760FC /* Pods_AirQuality.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AirQuality.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B8395EF21EC871E0057F887 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		8B8395F121EC89320057F887 /* QualityState+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QualityState+Extensions.swift"; sourceTree = "<group>"; };
+		8B8395F321EC8ACD0057F887 /* Labels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Labels.swift; sourceTree = "<group>"; };
+		8B8395F521ECAE940057F887 /* UIView+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Rx.swift"; sourceTree = "<group>"; };
 		A33BEEB8BCCC15D3759724DE /* Pods_AirQualityTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AirQualityTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA52BDB8B6E30764EDDE03E9 /* Pods-AirQualityTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirQualityTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AirQualityTests/Pods-AirQualityTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -136,6 +150,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		15768AF321ED07AE005AC555 /* Locale */ = {
+			isa = PBXGroup;
+			children = (
+				15768AF821ED07D4005AC555 /* Localizable.strings */,
+			);
+			path = Locale;
+			sourceTree = "<group>";
+		};
 		158AB82121E25F9F00CB216B = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +181,8 @@
 		158AB82C21E25F9F00CB216B /* AirQuality */ = {
 			isa = PBXGroup;
 			children = (
+				15768AF321ED07AE005AC555 /* Locale */,
+				8B8395EE21EC86FD0057F887 /* Style */,
 				151DF3ED21E4BCE3000BB85F /* Model */,
 				151DF3E321E49B80000BB85F /* Coordinators */,
 				158AB85D21E2862F00CB216B /* Extensions */,
@@ -199,6 +223,9 @@
 				158AB85E21E2865800CB216B /* UIViewController+Extensions.swift */,
 				158AB88421E37BA800CB216B /* UITableView+Extension.swift */,
 				158AB89421E3821900CB216B /* UITableViewCell+Extension.swift */,
+				15768AD621EB89AC005AC555 /* UserDefaults+Extension.swift */,
+				8B8395F121EC89320057F887 /* QualityState+Extensions.swift */,
+				8B8395F521ECAE940057F887 /* UIView+Rx.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -223,6 +250,15 @@
 				158AB87B21E3718200CB216B /* DisplayViewModel.swift */,
 			);
 			path = Display;
+			sourceTree = "<group>";
+		};
+		8B8395EE21EC86FD0057F887 /* Style */ = {
+			isa = PBXGroup;
+			children = (
+				8B8395EF21EC871E0057F887 /* Colors.swift */,
+				8B8395F321EC8ACD0057F887 /* Labels.swift */,
+			);
+			path = Style;
 			sourceTree = "<group>";
 		};
 		C3EB8689CAC095069A3B76BC /* Frameworks */ = {
@@ -333,6 +369,7 @@
 				158AB87A21E370A300CB216B /* DisplayViewController.xib in Resources */,
 				158AB86321E2917600CB216B /* AboutViewController.xib in Resources */,
 				158AB87121E36F1100CB216B /* SearchViewController.xib in Resources */,
+				15768AF621ED07D4005AC555 /* Localizable.strings in Resources */,
 				158AB87321E36FA400CB216B /* SearchViewCell.xib in Resources */,
 				158AB83521E25FA000CB216B /* Assets.xcassets in Resources */,
 			);
@@ -357,6 +394,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-AirQuality/Pods-AirQuality-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/HandyUIKit/HandyUIKit.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
@@ -365,6 +403,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HandyUIKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
@@ -426,6 +465,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				151DF3E721E49E82000BB85F /* Coordinator.swift in Sources */,
+				8B8395F221EC89320057F887 /* QualityState+Extensions.swift in Sources */,
+				8B8395F021EC871E0057F887 /* Colors.swift in Sources */,
 				151DF3F521E4BDE4000BB85F /* RESTModel.swift in Sources */,
 				158AB84E21E2601C00CB216B /* AppCoordinator.swift in Sources */,
 				151DF3E521E49B94000BB85F /* SearchCoordinator.swift in Sources */,
@@ -440,6 +481,8 @@
 				158AB86D21E36DB700CB216B /* SearchViewController.swift in Sources */,
 				158AB86F21E36EC100CB216B /* SearchViewModel.swift in Sources */,
 				151DF3EC21E4A20D000BB85F /* AboutCoordinator.swift in Sources */,
+				15768AD721EB89AC005AC555 /* UserDefaults+Extension.swift in Sources */,
+				8B8395F421EC8ACD0057F887 /* Labels.swift in Sources */,
 				151DF3F321E4BDAA000BB85F /* Measure.swift in Sources */,
 				158AB85F21E2865800CB216B /* UIViewController+Extensions.swift in Sources */,
 				151DF3EA21E4A152000BB85F /* DisplayCoordinator.swift in Sources */,
@@ -447,6 +490,7 @@
 				158AB82E21E25F9F00CB216B /* AppDelegate.swift in Sources */,
 				158AB87521E36FD900CB216B /* SearchViewCell.swift in Sources */,
 				158AB88521E37BA800CB216B /* UITableView+Extension.swift in Sources */,
+				8B8395F621ECAE940057F887 /* UIView+Rx.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,10 +513,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		15768AF821ED07D4005AC555 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				15768AF721ED07D4005AC555 /* pl */,
+				15768B0021ED084F005AC555 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		158AB83621E25FA000CB216B /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				158AB83721E25FA000CB216B /* Base */,
+				15768AED21ED06CC005AC555 /* pl */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -484,6 +538,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -535,6 +590,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = "-DDEBUG";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -545,6 +601,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -589,6 +646,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_SWIFT_FLAGS = "-DRELEASE";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";

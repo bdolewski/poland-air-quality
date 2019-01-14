@@ -24,8 +24,11 @@ class AboutCoordinator: Coordinator {
         let aboutVM = AboutViewModel()
         
         aboutVC.viewModel = aboutVM
-        aboutVC.title = "About station"
-        aboutVC.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 1)
+        aboutVC.title = NSLocalizedString("about.header", comment: "")
+        aboutVC.tabBarItem = UITabBarItem(title: NSLocalizedString("about.header", comment: ""),
+                                          image: UIImage(named: "About"),
+                                          tag: 2)
+//        aboutVC.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 1)
         
         self.navigationController.pushViewController(aboutVC, animated: false)
     }

@@ -7,6 +7,14 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
+
+struct Station {
+    let id: Int
+    let cityName: String?
+    let address: String?
+}
 
 class SearchCoordinator: Coordinator {
     var rootViewController: UIViewController {
@@ -24,8 +32,11 @@ class SearchCoordinator: Coordinator {
         let searchVM = SearchViewModel()
         
         searchVC.viewModel = searchVM
-        searchVC.title = "Search station"
-        searchVC.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 1)
+        searchVC.title = NSLocalizedString("search.header", comment: "")
+        searchVC.tabBarItem = UITabBarItem(title: NSLocalizedString("tab.search", comment: ""),
+                                           image: UIImage(named: "Search")!,
+                                           tag: 1)
+//        searchVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 1)
         
         self.navigationController.pushViewController(searchVC, animated: false)
     }

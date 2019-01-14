@@ -12,6 +12,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AboutViewController" customModule="AirQuality" customModuleProvider="target">
             <connections>
+                <outlet property="authorLabel" destination="v6S-dq-etO" id="HJ2-Ii-54B"/>
+                <outlet property="subtitleLabel" destination="p9r-kX-7NV" id="i0y-Ej-SNc"/>
                 <outlet property="view" destination="iN0-l3-epB" id="uT7-r7-0xZ"/>
             </connections>
         </placeholder>

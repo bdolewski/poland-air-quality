@@ -10,11 +10,18 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+protocol SearchViewControllerDelegate {
+    func didSelected(station: Station)
+}
+
 class SearchViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
     
     var viewModel: SearchViewModelType?
-    let disposeBag = DisposeBag()
+    var delegate: SearchViewControllerDelegate?
+    
+    private let disposeBag = DisposeBag()
+    private let storage = UserDefaults.standard
     
     deinit {
         print(#function, String(describing: self))
@@ -50,5 +57,28 @@ extension SearchViewController {
             { _, model, cell in
                 cell.configure(with: model) }
             .disposed(by: disposeBag)
+        
+        viewModel?.outputs.dataSource
+            .observeOn(MainScheduler.instance)
+            .skip(1)
+            .take(1)
+            .withLatestFrom(Observable.just(storage.fetch())) { fetchedOnline, storage -> Int? in
+                guard let storage = storage else { return nil }
+                return fetchedOnline.firstIndex(where: { $0.id == storage.id }) }
+            .subscribe(onNext: { [weak self] row in
+                guard let row = row else { return }
+                self?.tableView.selectRow(at: IndexPath(row: row, section: 0), animated: true, scrollPosition: .middle) })
+            .disposed(by: disposeBag)
+
+        viewModel?.outputs.selected
+            .subscribe(onNext: { [weak self] station in
+                self?.delegate?.didSelected(station: station)
+            })
+            .disposed(by: disposeBag)
+        
+        tableView.rx.modelSelected(MeasuringStation.self)
+            .subscribe(onNext: { [weak self] station in
+                self?.viewModel?.inputs.select(station: station)
+            }).disposed(by: disposeBag)
     }
 }

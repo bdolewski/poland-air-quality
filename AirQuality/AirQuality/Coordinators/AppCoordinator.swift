@@ -14,14 +14,14 @@ class AppCoordinator: Coordinator {
     }
     
     var window: UIWindow?
-    let childCoordinators: [Coordinator]
+    var childCoordinators: [Coordinator]
     
     lazy var tabBarController: UIViewController = {
         let tabBarController = UITabBarController()
-
+        
         childCoordinators.forEach { $0.start() }
         let viewControllers = childCoordinators.map { $0.rootViewController }
-
+        
         tabBarController.viewControllers = viewControllers
         return tabBarController
     }()
