@@ -79,13 +79,43 @@ extension DisplayViewController {
     }
     
     func bindDetails() {
-        bindPM10()
-        bindPM25()
-        bindSO2()
-        bindCO()
-        bindO3()
-        bindNO2()
-        bindBenzene()
+        guard let viewModel = self.viewModel else { return }
+        
+        let qualityStates = [viewModel.outputs.pm_10Status,
+                             viewModel.outputs.pm_2_5Status,
+                             viewModel.outputs.so2Status,
+                             viewModel.outputs.coStatus,
+                             viewModel.outputs.o3Status,
+                             viewModel.outputs.no2Status,
+                             viewModel.outputs.c6H6Status]
+        
+        let qualityLabels: [UILabel] = [pm10Label,
+                                        pm2_5Label,
+                                        so2StateLabel,
+                                        coStateLabel,
+                                        o3StateLabel,
+                                        no2StateLabel,
+                                        benzeneStateLabel]
+        
+        zip(qualityStates, qualityLabels).forEach { self.bindStatus(status: $0, label: $1) }
+        
+        let qualityDates = [viewModel.outputs.pm_10Date,
+                            viewModel.outputs.pm_2_5Date,
+                            viewModel.outputs.so2Date,
+                            viewModel.outputs.coDate,
+                            viewModel.outputs.o3Date,
+                            viewModel.outputs.no2Date,
+                            viewModel.outputs.c6H6Date]
+        
+        let dateLabels: [UILabel] = [pm10DateLabel,
+                                     pm2_5DateLabel,
+                                     so2DateLabel,
+                                     coDateLabel,
+                                     o3DateLabel,
+                                     no2DateLabel,
+                                     benzeneDateLabel]
+        
+        zip(qualityDates, dateLabels).forEach { self.bindDate(date: $0, label: $1) }
     }
 }
 
@@ -116,115 +146,19 @@ extension DisplayViewController {
 }
 
 private extension DisplayViewController {
-    func bindPM10() {
-        guard let viewModel = self.viewModel else { return }
-        
-        viewModel.outputs.pm_10Status
+    func bindStatus(status: BehaviorRelay<QualityState>, label: UILabel) {
+        status
             .asDriver()
             .map { Labels.measurementQuality(text: DisplayViewController.translate(qualityState: $0), color: $0.color) }
-            .drive(pm10Label.rx.attributedText)
-            .disposed(by: disposeBag)
-        
-        viewModel.outputs.pm_10Date
-            .asDriver()
-            .map(DisplayViewController.formatDate)
-            .drive(pm10DateLabel.rx.text)
+            .drive(label.rx.attributedText)
             .disposed(by: disposeBag)
     }
     
-    func bindPM25() {
-        guard let viewModel = self.viewModel else { return }
-        
-        viewModel.outputs.pm_2_5Status
-            .asDriver()
-            .map { Labels.measurementQuality(text: DisplayViewController.translate(qualityState: $0), color: $0.color) }
-            .drive(pm2_5Label.rx.attributedText)
-            .disposed(by: disposeBag)
-        
-        viewModel.outputs.pm_2_5Date
+    func bindDate(date: BehaviorRelay<String>, label: UILabel) {
+        date
             .asDriver()
             .map(DisplayViewController.formatDate)
-            .drive(pm2_5DateLabel.rx.text)
-            .disposed(by: disposeBag)
-    }
-    
-    func bindSO2() {
-        guard let viewModel = self.viewModel else { return }
-        
-        viewModel.outputs.so2Status
-            .asDriver()
-            .map { Labels.measurementQuality(text: DisplayViewController.translate(qualityState: $0), color: $0.color) }
-            .drive(so2StateLabel.rx.attributedText)
-            .disposed(by: disposeBag)
-        
-        viewModel.outputs.so2Date
-            .asDriver()
-            .map(DisplayViewController.formatDate)
-            .drive(so2DateLabel.rx.text)
-            .disposed(by: disposeBag)
-    }
-    
-    func bindCO() {
-        guard let viewModel = self.viewModel else { return }
-        
-        viewModel.outputs.coStatus
-            .asDriver()
-            .map { Labels.measurementQuality(text: DisplayViewController.translate(qualityState: $0), color: $0.color) }
-            .drive(coStateLabel.rx.attributedText)
-            .disposed(by: disposeBag)
-        
-        viewModel.outputs.coDate
-            .asDriver()
-            .map(DisplayViewController.formatDate)
-            .drive(coDateLabel.rx.text)
-            .disposed(by: disposeBag)
-    }
-    
-    func bindO3() {
-        guard let viewModel = self.viewModel else { return }
-        
-        viewModel.outputs.o3Status
-            .asDriver()
-            .map { Labels.measurementQuality(text: DisplayViewController.translate(qualityState: $0), color: $0.color) }
-            .drive(o3StateLabel.rx.attributedText)
-            .disposed(by: disposeBag)
-        
-        viewModel.outputs.o3Date
-            .asDriver()
-            .map(DisplayViewController.formatDate)
-            .drive(o3DateLabel.rx.text)
-            .disposed(by: disposeBag)
-    }
-    
-    func bindNO2() {
-        guard let viewModel = self.viewModel else { return }
-        
-        viewModel.outputs.no2Status
-            .asDriver()
-            .map { Labels.measurementQuality(text: DisplayViewController.translate(qualityState: $0), color: $0.color) }
-            .drive(no2StateLabel.rx.attributedText)
-            .disposed(by: disposeBag)
-        
-        viewModel.outputs.no2Date
-            .asDriver()
-            .map(DisplayViewController.formatDate)
-            .drive(no2DateLabel.rx.text)
-            .disposed(by: disposeBag)
-    }
-    
-    func bindBenzene() {
-        guard let viewModel = self.viewModel else { return }
-        
-        viewModel.outputs.c6H6Status
-            .asDriver()
-            .map { Labels.measurementQuality(text: DisplayViewController.translate(qualityState: $0), color: $0.color) }
-            .drive(benzeneStateLabel.rx.attributedText)
-            .disposed(by: disposeBag)
-        
-        viewModel.outputs.c6H6Date
-            .asDriver()
-            .map(DisplayViewController.formatDate)
-            .drive(benzeneDateLabel.rx.text)
+            .drive(label.rx.text)
             .disposed(by: disposeBag)
     }
 }
