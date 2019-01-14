@@ -34,8 +34,7 @@ class DisplayViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        viewModel?.inputs.generalMeasurements()
-        viewModel?.inputs.detailedMeasurements()
+        viewModel?.inputs.fetchMeasurements()
     }
 }
 

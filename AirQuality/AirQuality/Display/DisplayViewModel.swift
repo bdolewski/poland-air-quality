@@ -11,8 +11,7 @@ import RxSwift
 import RxCocoa
 
 protocol DisplayViewModelInput {
-    func generalMeasurements()
-    func detailedMeasurements()
+    func fetchMeasurements()
 }
 
 protocol DisplayViewModelOutput {
@@ -118,16 +117,13 @@ class DisplayViewModel: DisplayViewModelInput, DisplayViewModelOutput {
         print(#function, String(describing: self))
     }
     
-    func generalMeasurements() {
+    func fetchMeasurements() {
         guard let storage = storage.fetch() else { return }
         
         let general = DisplayViewModel.downloadGeneralQuality(stationId: storage.id)
                 .share()
         general
-//            .do(onNext: { data in
-//                dump(data)
-//                print("*************")
-//            })
+            .do(onNext: { DisplayViewModel.debug(response: $0) })
             .map { $0.overall.state }
             .catchErrorJustReturn(.notAvailable)
             .bind(to: overallState)
@@ -231,51 +227,6 @@ class DisplayViewModel: DisplayViewModelInput, DisplayViewModelOutput {
             .bind(to: c6H6Date)
             .disposed(by: disposeBag)
     }
-    
-    func detailedMeasurements() {
-        //guard let storage = storage.fetch() else { return }
-        
-//        let measurements = DisplayViewModel
-//            .downloadSensors(from: storage.id)
-//            .flatMap { sensors in Observable.from(sensors)}
-//            .flatMap { DisplayViewModel.downloadMeasurement(from: $0) }
-//            .toArray()
-//            .share()
-        
-//        let key_pm10 = measurements
-//            .map { $0.first(where: { $0.key == Key.pm10 }) }
-//            .flatMap { Observable.from( optional: $0 ) }
-//            .do(onNext: { key in print("PM 10: \(key.value)") })
-//            .share()
-
-//        key_pm10
-//            .map { String("\($0.description)") }
-//            .catchErrorJustReturn("")
-//            .bind(to: pm_10Status)
-//            .disposed(by: disposeBag)
-//
-//        key_pm10
-//            .map { String("\($0.date)") }
-//            .catchErrorJustReturn("")
-//            .bind(to: pm_10Date)
-//            .disposed(by: disposeBag)
-//
-//        let key_pm2_5 = measurements
-//            .map { $0.first(where: { $0.key == Key.pm2_5 }) }
-//            .flatMap { Observable.from( optional: $0 ) }
-//            .do(onNext: { key in print("PM 2,5: \(key.value)") })
-//            .share()
-        
-//        key_pm2_5
-//            .map { String("\($0.description)") }
-//            .bind(to: pm_2_5Status)
-//            .disposed(by: disposeBag)
-        
-//        key_pm2_5
-//            .map { String("\($0.date)") }
-//            .bind(to: pm_2_5Date)
-//            .disposed(by: disposeBag)
-    }
 }
 
 extension DisplayViewModel: DisplayViewModelType {
@@ -299,33 +250,11 @@ extension DisplayViewModel {
     }
 }
 
-// MARK: - Functions to get detailed measurements
 extension DisplayViewModel {
-    static func downloadSensors(from stationId: Int) -> Observable<[Sensor]> {
-        let remote = URL(string: "http://api.gios.gov.pl/pjp-api/rest/station/sensors/\(stationId)")!
-        let request = URLRequest(url: remote)
-        
-        return URLSession.shared.rx.response(request: request)
-            .map { _, data in return try DisplayViewModel.parseSensors(data: data) }
-            .catchErrorJustReturn([])
-    }
-    
-    static func downloadMeasurement(from sensor: Sensor) -> Observable<Measure> {
-        let sensorId = sensor.id
-        let remote = URL(string: "http://api.gios.gov.pl/pjp-api/rest/data/getData/\(sensorId)")!
-        let request = URLRequest(url: remote)
-        
-        return URLSession.shared.rx.response(request: request)
-            .map { _, data in return try DisplayViewModel.parseMeasurement(data: data) }
-    }
-    
-    static func parseSensors(data: Data) throws -> [Sensor] {
-        let sensors = try JSONDecoder().decode([Sensor].self, from: data)
-        return sensors
-    }
-    
-    static func parseMeasurement(data: Data) throws -> Measure {
-        let measure = try JSONDecoder().decode(Measure.self, from: data)
-        return measure
+    static func debug(response: Quality) {
+        #if DEBUG
+        dump(response)
+        print("*************")
+        #endif
     }
 }
