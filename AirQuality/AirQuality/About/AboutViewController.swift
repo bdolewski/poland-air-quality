@@ -9,9 +9,15 @@
 import UIKit
 
 class AboutViewController: UIViewController {
+    @IBOutlet var authorLabel: UILabel!
+    @IBOutlet var subtitleLabel: UILabel!
+    
     var viewModel: AboutViewModelType?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        authorLabel.text = NSLocalizedString("about.author", comment: "") + "Bartosz Dolewski"
+        subtitleLabel.text = "Proof of concept 🛠🤓"
     }
 }

@@ -32,6 +32,7 @@ class SearchCoordinator: Coordinator {
         let searchVM = SearchViewModel()
         
         searchVC.viewModel = searchVM
+        searchVC.title = NSLocalizedString("search.header", comment: "")
         searchVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 1)
         
         self.navigationController.pushViewController(searchVC, animated: false)

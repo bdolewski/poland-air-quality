@@ -11,6 +11,7 @@ import RxSwift
 import RxCocoa
 
 class DisplayViewController: UIViewController {
+    @IBOutlet var headerLabel: UILabel!
     @IBOutlet var generalQualityLabel: UILabel!
     @IBOutlet var stationAddressLabel: UILabel!
     
@@ -53,6 +54,8 @@ class DisplayViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        headerLabel.text = NSLocalizedString("display.header", comment: "")
+        
         pm10StaticLabel.attributedText = Labels.textForPM10
         pm2_5StaticLabel.attributedText = Labels.textForPM25
         so2StaticLabel.attributedText = Labels.textForSO2

@@ -19,6 +19,7 @@
                 <outlet property="coStateLabel" destination="jlZ-oB-jkV" id="qcs-p6-HfO"/>
                 <outlet property="coStaticLabel" destination="xHg-QJ-gzk" id="A6l-52-g5z"/>
                 <outlet property="generalQualityLabel" destination="YrH-AI-uEe" id="1K7-ZZ-L5q"/>
+                <outlet property="headerLabel" destination="fDv-Oa-wVK" id="5N0-Jx-p7c"/>
                 <outlet property="no2DateLabel" destination="zib-wS-XmV" id="jSS-CW-UoL"/>
                 <outlet property="no2StateLabel" destination="cwv-Pj-oF4" id="MkI-AH-OcF"/>
                 <outlet property="no2StaticLabel" destination="xBG-x2-dxX" id="Ke4-Pz-dXB"/>
