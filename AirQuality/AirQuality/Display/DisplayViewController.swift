@@ -14,24 +14,31 @@ class DisplayViewController: UIViewController {
     @IBOutlet var generalQualityLabel: UILabel!
     @IBOutlet var stationAddressLabel: UILabel!
     
+    @IBOutlet var pm10StaticLabel: UILabel!
     @IBOutlet var pm10Label: UILabel!
     @IBOutlet var pm10DateLabel: UILabel!
     
+    @IBOutlet var pm2_5StaticLabel: UILabel!
     @IBOutlet var pm2_5Label: UILabel!
     @IBOutlet var pm2_5DateLabel: UILabel!
     
+    @IBOutlet var so2StaticLabel: UILabel!
     @IBOutlet var so2StateLabel: UILabel!
     @IBOutlet var so2DateLabel: UILabel!
     
+    @IBOutlet var coStaticLabel: UILabel!
     @IBOutlet var coStateLabel: UILabel!
     @IBOutlet var coDateLabel: UILabel!
     
+    @IBOutlet var o3StaticLabel: UILabel!
     @IBOutlet var o3StateLabel: UILabel!
     @IBOutlet var o3DateLabel: UILabel!
     
+    @IBOutlet var no2StaticLabel: UILabel!
     @IBOutlet var no2StateLabel: UILabel!
     @IBOutlet var no2DateLabel: UILabel!
     
+    @IBOutlet var benzeneStaticLabel: UILabel!
     @IBOutlet var benzeneStateLabel: UILabel!
     @IBOutlet var benzeneDateLabel: UILabel!
     
@@ -46,6 +53,14 @@ class DisplayViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        pm10StaticLabel.attributedText = Labels.textForPM10
+        pm2_5StaticLabel.attributedText = Labels.textForPM25
+        so2StaticLabel.attributedText = Labels.textForSO2
+        coStaticLabel.attributedText = Labels.textForCO
+        o3StaticLabel.attributedText = Labels.textForO3
+        no2StaticLabel.attributedText = Labels.textForNO2
+        benzeneStaticLabel.attributedText = Labels.textForBenzene
+        
         bindGeneral()
         bindDetails()
     }
@@ -68,7 +83,8 @@ extension DisplayViewController {
         
         viewModel.outputs.streetAddres
             .asDriver()
-            .drive(stationAddressLabel.rx.text)
+            .map { Labels.streetAddress(text: $0) }
+            .drive(stationAddressLabel.rx.attributedText)
             .disposed(by: disposeBag)
         
         viewModel.outputs.overallState

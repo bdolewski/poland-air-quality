@@ -1,4 +1,5 @@
 PODS:
+  - HandyUIKit (1.8.0)
   - RxAtomic (4.4.0)
   - RxCocoa (4.4.0):
     - RxSwift (~> 4.0)
@@ -6,20 +7,23 @@ PODS:
     - RxAtomic (~> 4.4)
 
 DEPENDENCIES:
+  - HandyUIKit
   - RxCocoa
   - RxSwift
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - HandyUIKit
     - RxAtomic
     - RxCocoa
     - RxSwift
 
 SPEC CHECKSUMS:
+  HandyUIKit: 62765b97ef7abcc73c8df2f37eb79ee02d704982
   RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
   RxCocoa: df63ebf7b9a70d6b4eeea407ed5dd4efc8979749
   RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
 
-PODFILE CHECKSUM: 5ca04f161975478a4150594db409f86dccab15f7
+PODFILE CHECKSUM: bd925806f47654af8ca8c647a8d45966890847b4
 
 COCOAPODS: 1.5.3

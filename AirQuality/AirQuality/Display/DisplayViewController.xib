@@ -14,19 +14,26 @@
             <connections>
                 <outlet property="benzeneDateLabel" destination="4KG-Zf-6MZ" id="ABs-5x-xuk"/>
                 <outlet property="benzeneStateLabel" destination="L8w-pn-ezf" id="6UY-uW-N9m"/>
+                <outlet property="benzeneStaticLabel" destination="qHO-Ih-boO" id="9nD-LW-d4T"/>
                 <outlet property="coDateLabel" destination="vS2-fo-seI" id="2u8-p7-cUI"/>
                 <outlet property="coStateLabel" destination="jlZ-oB-jkV" id="qcs-p6-HfO"/>
+                <outlet property="coStaticLabel" destination="xHg-QJ-gzk" id="A6l-52-g5z"/>
                 <outlet property="generalQualityLabel" destination="YrH-AI-uEe" id="1K7-ZZ-L5q"/>
                 <outlet property="no2DateLabel" destination="zib-wS-XmV" id="jSS-CW-UoL"/>
                 <outlet property="no2StateLabel" destination="cwv-Pj-oF4" id="MkI-AH-OcF"/>
+                <outlet property="no2StaticLabel" destination="xBG-x2-dxX" id="Ke4-Pz-dXB"/>
                 <outlet property="o3DateLabel" destination="fTR-lc-Odu" id="URy-PY-AVN"/>
                 <outlet property="o3StateLabel" destination="o0U-me-zlG" id="Edx-5T-RXp"/>
+                <outlet property="o3StaticLabel" destination="dlQ-yb-4Sk" id="3j8-HI-lSq"/>
                 <outlet property="pm10DateLabel" destination="qiH-f1-kLo" id="lAG-93-ll5"/>
                 <outlet property="pm10Label" destination="lPg-Cz-ahq" id="eNH-oo-Ism"/>
+                <outlet property="pm10StaticLabel" destination="9tG-bM-ndr" id="FAp-ke-NsT"/>
                 <outlet property="pm2_5DateLabel" destination="WS1-dI-QFe" id="ymm-6i-e9q"/>
                 <outlet property="pm2_5Label" destination="KN8-aU-cSa" id="eXd-6S-bLa"/>
+                <outlet property="pm2_5StaticLabel" destination="Edp-Q7-jnl" id="VDD-gC-ksF"/>
                 <outlet property="so2DateLabel" destination="i0H-Yt-jFC" id="ngh-Xu-y5M"/>
                 <outlet property="so2StateLabel" destination="gCZ-Kb-2Ka" id="Fx4-U4-Ou4"/>
+                <outlet property="so2StaticLabel" destination="DfK-62-0Tq" id="7He-sh-Rpj"/>
                 <outlet property="stationAddressLabel" destination="uKT-Q3-UYK" id="wUJ-vb-Bkd"/>
                 <outlet property="view" destination="iN0-l3-epB" id="uAS-U3-EYJ"/>
             </connections>
@@ -39,8 +46,8 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jmj-gX-7Zj" userLabel="General Measure">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="412.66666666666669"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stacja pomiarowa:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uKT-Q3-UYK">
-                            <rect key="frame" x="20" y="372.33333333333331" width="335" height="20.333333333333314"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stacja pomiarowa:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uKT-Q3-UYK">
+                            <rect key="frame" x="20" y="350.33333333333331" width="335" height="20.333333333333314"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -67,6 +74,7 @@
                     <constraints>
                         <constraint firstItem="wMW-Rs-bQr" firstAttribute="trailing" secondItem="Fsx-gW-J1M" secondAttribute="trailing" constant="20" id="4Dj-Cb-39y"/>
                         <constraint firstItem="uKT-Q3-UYK" firstAttribute="leading" secondItem="wMW-Rs-bQr" secondAttribute="leading" constant="20" id="8cQ-RQ-fp4"/>
+                        <constraint firstItem="uKT-Q3-UYK" firstAttribute="top" secondItem="Fsx-gW-J1M" secondAttribute="bottom" constant="80" id="SQm-3a-sXJ"/>
                         <constraint firstItem="Fsx-gW-J1M" firstAttribute="centerY" secondItem="wMW-Rs-bQr" secondAttribute="centerY" id="adX-LM-utT"/>
                         <constraint firstItem="wMW-Rs-bQr" firstAttribute="bottom" secondItem="uKT-Q3-UYK" secondAttribute="bottom" constant="20" id="g1V-WT-7oM"/>
                         <constraint firstItem="Fsx-gW-J1M" firstAttribute="leading" secondItem="wMW-Rs-bQr" secondAttribute="leading" constant="20" id="k1H-r7-kTw"/>
@@ -76,6 +84,7 @@
                     <viewLayoutGuide key="safeArea" id="wMW-Rs-bQr"/>
                     <variation key="default">
                         <mask key="constraints">
+                            <exclude reference="g1V-WT-7oM"/>
                             <exclude reference="xqs-27-WU1"/>
                         </mask>
                     </variation>

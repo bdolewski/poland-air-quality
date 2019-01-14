@@ -8,6 +8,7 @@ target 'AirQuality' do
   # Pods for AirQuality
   pod 'RxSwift'
   pod 'RxCocoa'
+  pod 'HandyUIKit'
 
   target 'AirQualityTests' do
     inherit! :search_paths
