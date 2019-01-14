@@ -263,7 +263,7 @@ extension DisplayViewModel {
         inputDateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         
         let finalDateFormatter = DateFormatter()
-        finalDateFormatter.dateFormat = "dd MMM yyyy, HH:mm"
+        finalDateFormatter.dateFormat = "dd MMM, HH:mm"
         finalDateFormatter.locale = Locale.current
         
         if let date = inputDateFormatter.date(from: dateString) {

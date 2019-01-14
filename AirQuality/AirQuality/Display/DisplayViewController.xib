@@ -50,7 +50,7 @@
                             <rect key="frame" x="20" y="63.999999999999986" width="335" height="206.66666666666663"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Fsx-gW-J1M" userLabel="Quality">
-                                    <rect key="frame" x="0.0" y="0.0" width="335" height="181.33333333333334"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="335" height="176.66666666666666"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jakość powietrza:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fDv-Oa-wVK" userLabel="Quality label">
                                             <rect key="frame" x="98.666666666666671" y="0.0" width="137.66666666666663" height="40"/>
@@ -62,15 +62,18 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DOBRA" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YrH-AI-uEe">
-                                            <rect key="frame" x="85.666666666666671" y="40" width="163.66666666666663" height="141.33333333333334"/>
+                                            <rect key="frame" x="85.666666666666671" y="40" width="163.66666666666663" height="136.66666666666666"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="45"/>
                                             <color key="textColor" red="0.1215686275" green="0.5" blue="0.1215686275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                 </stackView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stacja pomiarowa:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="uKT-Q3-UYK">
-                                    <rect key="frame" x="0.0" y="181.33333333333334" width="335" height="25.333333333333343"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stacja pomiarowa:" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="uKT-Q3-UYK">
+                                    <rect key="frame" x="0.0" y="176.66666666666666" width="335" height="30"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="30" id="GTq-Q2-ZHd"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
