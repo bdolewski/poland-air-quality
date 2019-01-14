@@ -59,7 +59,6 @@ struct DisplayViewModelConfig {
     static let noStreetName = String("No street address")
 }
 
-
 class DisplayViewModel: DisplayViewModelInput, DisplayViewModelOutput {
     let availableInStorage = BehaviorRelay<Bool>.init(value: false)
     
@@ -144,6 +143,7 @@ class DisplayViewModel: DisplayViewModelInput, DisplayViewModelOutput {
         
         general
             .map { $0.pm10Date ?? DisplayViewModelConfig.noData }
+            .map(DisplayViewModel.parse)
             .catchErrorJustReturn(DisplayViewModelConfig.noData)
             .bind(to: pm_10Date)
             .disposed(by: disposeBag)
@@ -157,6 +157,7 @@ class DisplayViewModel: DisplayViewModelInput, DisplayViewModelOutput {
         
         general
             .map { $0.pm25Date ?? DisplayViewModelConfig.noData }
+            .map(DisplayViewModel.parse)
             .catchErrorJustReturn(DisplayViewModelConfig.noData)
             .bind(to: pm_2_5Date)
             .disposed(by: disposeBag)
@@ -172,6 +173,8 @@ class DisplayViewModel: DisplayViewModelInput, DisplayViewModelOutput {
         //Should be String like everything else, but we got some jibberish Int value like 1547450437000
         //Instead - use date from overall measurement
         overallDate
+            .map(DisplayViewModel.parse)
+            .catchErrorJustReturn(DisplayViewModelConfig.noData)
             .bind(to: no2Date)
             .disposed(by: disposeBag)
         
@@ -184,6 +187,7 @@ class DisplayViewModel: DisplayViewModelInput, DisplayViewModelOutput {
         
         general
             .map { $0.so2Date ?? DisplayViewModelConfig.noData }
+            .map(DisplayViewModel.parse)
             .catchErrorJustReturn(DisplayViewModelConfig.noData)
             .bind(to: so2Date)
             .disposed(by: disposeBag)
@@ -197,6 +201,7 @@ class DisplayViewModel: DisplayViewModelInput, DisplayViewModelOutput {
         
         general
             .map { $0.coDate ?? DisplayViewModelConfig.noData }
+            .map(DisplayViewModel.parse)
             .catchErrorJustReturn(DisplayViewModelConfig.noData)
             .bind(to: coDate)
             .disposed(by: disposeBag)
@@ -210,6 +215,7 @@ class DisplayViewModel: DisplayViewModelInput, DisplayViewModelOutput {
         
         general
             .map { $0.o3Date ?? DisplayViewModelConfig.noData }
+            .map(DisplayViewModel.parse)
             .catchErrorJustReturn(DisplayViewModelConfig.noData)
             .bind(to: o3Date)
             .disposed(by: disposeBag)
@@ -223,6 +229,7 @@ class DisplayViewModel: DisplayViewModelInput, DisplayViewModelOutput {
         
         general
             .map { $0.c6H6Date ?? DisplayViewModelConfig.noData }
+            .map(DisplayViewModel.parse)
             .catchErrorJustReturn(DisplayViewModelConfig.noData)
             .bind(to: c6H6Date)
             .disposed(by: disposeBag)
@@ -247,6 +254,23 @@ extension DisplayViewModel {
     static func parseGeneralQuality(data: Data) throws -> Quality {
         let quality = try JSONDecoder().decode(Quality.self, from: data)
         return quality
+    }
+    
+    static func parse(dateString: String) -> String {
+        guard dateString.isEmpty == false else { return dateString }
+        
+        let inputDateFormatter = DateFormatter()
+        inputDateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        
+        let finalDateFormatter = DateFormatter()
+        finalDateFormatter.dateFormat = "dd MMM yyyy, HH:mm"
+        finalDateFormatter.locale = Locale.current
+        
+        if let date = inputDateFormatter.date(from: dateString) {
+            return finalDateFormatter.string(from: date)
+        } else {
+            return dateString
+        }
     }
 }
 
