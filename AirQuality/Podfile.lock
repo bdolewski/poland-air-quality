@@ -1,10 +1,11 @@
 PODS:
-  - HandyUIKit (1.8.0)
-  - RxAtomic (4.4.0)
-  - RxCocoa (4.4.0):
-    - RxSwift (~> 4.0)
-  - RxSwift (4.4.0):
-    - RxAtomic (~> 4.4)
+  - HandyUIKit (1.9.0)
+  - RxCocoa (5.0.0):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxRelay (5.0.0):
+    - RxSwift (~> 5)
+  - RxSwift (5.0.0)
 
 DEPENDENCIES:
   - HandyUIKit
@@ -14,16 +15,16 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - HandyUIKit
-    - RxAtomic
     - RxCocoa
+    - RxRelay
     - RxSwift
 
 SPEC CHECKSUMS:
-  HandyUIKit: 62765b97ef7abcc73c8df2f37eb79ee02d704982
-  RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
-  RxCocoa: df63ebf7b9a70d6b4eeea407ed5dd4efc8979749
-  RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
+  HandyUIKit: 10c4f5997d49e41f702d5c0f11dc390b23a82d5f
+  RxCocoa: fcf32050ac00d801f34a7f71d5e8e7f23026dcd8
+  RxRelay: 4f7409406a51a55cd88483f21ed898c234d60f18
+  RxSwift: 8b0671caa829a763bbce7271095859121cbd895f
 
-PODFILE CHECKSUM: bd925806f47654af8ca8c647a8d45966890847b4
+PODFILE CHECKSUM: b2f476da84a1e278059105e71d7360ccf71052b3
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.7.1
