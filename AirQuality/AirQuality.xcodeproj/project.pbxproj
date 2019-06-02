@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -334,9 +334,11 @@
 				TargetAttributes = {
 					158AB82921E25F9F00CB216B = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 					};
 					158AB83D21E25FA000CB216B = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 						TestTargetID = 158AB82921E25F9F00CB216B;
 					};
 				};
@@ -348,6 +350,7 @@
 			knownRegions = (
 				en,
 				Base,
+				pl,
 			);
 			mainGroup = 158AB82121E25F9F00CB216B;
 			productRefGroup = 158AB82B21E25F9F00CB216B /* Products */;
@@ -583,6 +586,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -639,6 +643,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -657,7 +662,6 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bartosz.dolewski.drumsoft.AirQuality;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -676,7 +680,6 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bartosz.dolewski.drumsoft.AirQuality;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -696,7 +699,6 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bartosz.dolewski.drumsoft.AirQualityTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AirQuality.app/AirQuality";
 			};
@@ -717,7 +719,6 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bartosz.dolewski.drumsoft.AirQualityTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AirQuality.app/AirQuality";
 			};
